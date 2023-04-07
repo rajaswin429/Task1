@@ -1,0 +1,197 @@
+package Reader;
+
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import java.io.*;
+
+
+
+	import java.io.BufferedReader;
+
+	import java.io.FileOutputStream;
+
+	import java.io.FileReader;
+
+	import java.io.IOException;
+
+	import java.io.OutputStream;
+
+	import java.util.ArrayList;
+
+	import java.util.Collections;
+	
+	 import java.lang.AutoCloseable;
+
+	//import FileInputStream;
+
+
+
+	import org.apache.poi.ss.usermodel.Cell;
+
+	import org.apache.poi.ss.usermodel.Row;
+
+	import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+    import java.io.*;
+
+
+
+	public class GenerateXmlFile  {
+
+	       public int addresult;
+
+	        public int minrow;
+ 
+	      public  int maxrow;
+
+	        public int avgrow;
+
+	        public int rownum;
+
+	        public int limit;
+
+	       int row;
+
+	  public      ArrayList<Integer> rowarr = new ArrayList<Integer>();
+
+	       
+
+        public GenerateXmlFile(){
+
+
+
+	        }
+
+
+
+	       public GenerateXmlFile(int rownum, int limit, int addresult, int minrow, int maxrow, int avgrow, int row){
+
+	                this.rownum =  rownum;
+
+	                this.limit = limit;
+
+	                this.addresult =  addresult;
+
+	                this.minrow =   minrow;
+
+	                this.maxrow = maxrow;
+
+	                this.avgrow = avgrow;
+
+	                this.row =  row;
+
+	        }
+
+
+
+
+
+
+
+
+
+	      
+
+	        
+
+	        public  void  readingCol(int colnumber,int limit , ArrayList<Integer> Testarr)
+
+	          {
+
+	          for(int i = colnumber; i <= limit ; i++ ) {
+
+
+
+	          rowarr.add(Testarr.get(i));
+
+
+
+	          }
+
+	          System.out.format("the %d row values are \n", row );
+
+	          System.out.println(rowarr);
+
+	          }
+
+
+
+	      
+
+	        
+
+	        
+
+	        
+
+	        public void assigningValues(ArrayList<Integer> array) {
+
+	                  System.out.println("");
+
+	          for(int i : array ) {
+
+
+
+	                  addresult =  addresult + i;
+
+                 }
+
+
+
+	         System.out.format("sum the elements of %dst row is :\n",row);
+
+
+
+
+
+	          System.out.println(addresult);
+
+
+
+	          System.out.format("sorting the %dst row\n", row, rowarr);
+
+
+
+	          Collections.sort(rowarr);
+
+	          System.out.println(rowarr);
+
+	          minrow = rowarr.get(0);
+
+	          System.out.format("the %dst row minimum element is %d ",row,rowarr.get(0));
+
+
+
+	           maxrow = rowarr.get(rowarr.size() - 1);
+
+
+
+	     System.out.format("the %dst row maximum value is %d \n " ,row,maxrow);
+
+
+
+	     avgrow = addresult / rowarr.size();
+
+	     System.out.format("the average of %dst row is  %d \n " ,row,(addresult / rowarr.size()) );
+
+
+
+ System.out.println();
+
+
+	        }
+
+
+
+			public void printingInXml() {
+				DocumentBuilderFactory factory =
+						DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				
+			}
+	        
+	
+	}
+
